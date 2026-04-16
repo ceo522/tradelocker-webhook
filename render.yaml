@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: tradelocker-webhook
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: TL_EMAIL
+        value: dortchenterprisesllc@gmail.com
+      - key: TL_PASSWORD
+        sync: false
+      - key: TL_SERVER
+        value: gatesfx
